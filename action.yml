@@ -1,0 +1,16 @@
+name: Actions Ecosystem Action Push Tag
+description: Push a Git tag.
+author: Actions Ecosystem
+inputs:
+  tag:
+    description: A Git tag name.
+    required: true
+  message:
+    description: A message for the Git tag.
+    required: false
+runs:
+  using: docker
+  image: Dockerfile
+branding:
+  icon: search
+  color: yellow
