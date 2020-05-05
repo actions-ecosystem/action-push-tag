@@ -15,11 +15,6 @@ It would be more useful to use this with other GitHub Actions' outputs.
 | `tag`     | A Git tag name.            | `string` | `true`   | `N/A`   |
 | `message` | A message for the Git tag. | `string` | `false`  | ``      |
 
-## Example
-
-```yaml
-```
-
 ## License
 
 Copyright 2020 The Actions Ecosystem Authors.
