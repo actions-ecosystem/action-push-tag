@@ -23,7 +23,7 @@ name: Push a new tag with minor update
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   release:
