@@ -8,6 +8,14 @@ inputs:
   message:
     description: A message for the Git tag.
     required: false
+  ref:
+    description: Commit SHA or ref (tag) to target for the tag.
+    required: false
+  force:
+    description: Whether or not to force push (overwrite) the tag if it already exists. Useful for walking tags.
+    type: boolean
+    required: false
+    default: false
 runs:
   using: docker
   image: Dockerfile
