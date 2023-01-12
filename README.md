@@ -10,10 +10,12 @@ It would be more useful to use this with other GitHub Actions' outputs.
 
 ## Inputs
 
-|   NAME    |        DESCRIPTION         |   TYPE   | REQUIRED | DEFAULT |
-| --------- | -------------------------- | -------- | -------- | ------- |
-| `tag`     | A Git tag name.            | `string` | `true`   | `N/A`   |
-| `message` | A message for the Git tag. | `string` | `false`  | `''`    |
+|   NAME    |        DESCRIPTION          |   TYPE   | REQUIRED | DEFAULT |
+| --------- | --------------------------- | -------- | -------- | ------- |
+| `tag`     | A Git tag name.             | `string` | `true`   | `N/A`   |
+| `message` | A message for the Git tag.  | `string` | `false`  | `''`    |
+| `ref`     | Commit SHA or tag to target.| `string` | `false`  | `''`    |
+| `force`   | A message for the Git tag.  | `boolean`| `false`  | `false` |
 
 ## Example
 
