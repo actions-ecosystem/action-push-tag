@@ -13,7 +13,6 @@ inputs:
     required: false
   force:
     description: Whether or not to force push (overwrite) the tag if it already exists. Useful for walking tags.
-    type: boolean
     required: false
     default: false
 runs:
