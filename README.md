@@ -37,13 +37,13 @@ jobs:
       - uses: actions-ecosystem/action-get-latest-tag@v1
         id: get-latest-tag
 
-      - uses: thejeff77/action-bump-semver@v1
+      - uses: thejeff77/action-bump-semver@v1.0.0
         id: bump-semver
         with:
           current_version: ${{ steps.get-latest-tag.outputs.tag }}
           level: minor
 
-      - uses: thejeff77/action-push-tag@main
+      - uses: thejeff77/action-push-tag@v1.0.0
         with:
           tag: ${{ steps.bump-semver.outputs.new_version }}
           message: '${{ steps.bump-semver.outputs.new_version }}: PR #${{ github.event.pull_request.number }} ${{ github.event.pull_request.title }}'
