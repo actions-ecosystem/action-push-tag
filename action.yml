@@ -1,16 +1,63 @@
-name: Actions Ecosystem Action Push Tag
-description: Push a Git tag.
-author: Actions Ecosystem
+name: Push Any Git Tag
+description: based on Actions Ecosystem Push Tag - Fixed with additional features.
+author: Actions Ecosystem & theJeff77
+
 inputs:
   tag:
     description: A Git tag name.
+    type: string
     required: true
   message:
     description: A message for the Git tag.
+    type: string
     required: false
+  ref:
+    description: Commit SHA or ref (tag) to target for the tag.
+    type: string
+    required: false
+  force:
+    description: Whether or not to force push (overwrite) the tag if it already exists. Useful for walking tags.
+    type: boolean
+    required: false
+    default: false
+  always-pass:
+    description: If this build step should pass no matter what if ref is missing and the tag push fails.
+    type: boolean
+    required: false
+    default: false
 runs:
-  using: docker
-  image: Dockerfile
+  using: "composite"
+  steps:
+    - name: Tag
+      shell: bash
+      run: |
+        tag=${{ inputs.tag }}
+        message=${{ inputs.message }}
+        ref=${{ inputs.ref }}
+        force=${{ inputs.force }}
+        alwaysPass=${{ inputs.always-pass }}
+        
+        if [ "$force" = "true" ]; then
+          force="-f"
+        else
+          unset force
+        fi
+        
+        if [ "$always-pass" = "true" ]; then
+          alwaysPass=" || true"
+        else
+          unset alwaysPass
+        fi
+        
+        if [ -z "$ref" ]; then
+          ref="HEAD"
+        fi
+        
+        git config user.name "${GITHUB_ACTOR}"
+        git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+        
+        git tag -a "${tag}" "${ref}" -m "${message}" ${force} ${alwaysPass}
+        git push origin "${tag}" ${force} ${alwaysPass}
 branding:
   icon: search
   color: yellow

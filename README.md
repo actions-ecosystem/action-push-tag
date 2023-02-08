@@ -10,10 +10,13 @@ It would be more useful to use this with other GitHub Actions' outputs.
 
 ## Inputs
 
-|   NAME    |        DESCRIPTION         |   TYPE   | REQUIRED | DEFAULT |
-| --------- | -------------------------- | -------- | -------- | ------- |
-| `tag`     | A Git tag name.            | `string` | `true`   | `N/A`   |
-| `message` | A message for the Git tag. | `string` | `false`  | `''`    |
+|   NAME       |        DESCRIPTION                     |   TYPE   | REQUIRED | DEFAULT |
+| ------------ | -------------------------------------- | -------- | -------- | ------- |
+| `tag`        | A Git tag name.                        | `string` | `true`   | `N/A`   |
+| `message`    | A message for the Git tag.             | `string` | `false`  | `''`    |
+| `ref`        | Commit SHA or tag to target.           | `string` | `false`  | `''`    |
+| `force`      | A message for the Git tag.             | `boolean`| `false`  | `false` |
+| `always-pass`| If step should pass if tag push fails  | `boolean`| `false`  | `false` |
 
 ## Example
 
@@ -34,13 +37,13 @@ jobs:
       - uses: actions-ecosystem/action-get-latest-tag@v1
         id: get-latest-tag
 
-      - uses: actions-ecosystem/action-bump-semver@v1
+      - uses: thejeff77/action-bump-semver@v1.0.0
         id: bump-semver
         with:
           current_version: ${{ steps.get-latest-tag.outputs.tag }}
           level: minor
 
-      - uses: actions-ecosystem/action-push-tag@v1
+      - uses: thejeff77/action-push-tag@v1.0.0
         with:
           tag: ${{ steps.bump-semver.outputs.new_version }}
           message: '${{ steps.bump-semver.outputs.new_version }}: PR #${{ github.event.pull_request.number }} ${{ github.event.pull_request.title }}'
