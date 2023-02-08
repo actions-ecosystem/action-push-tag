@@ -57,7 +57,7 @@ runs:
         git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
         
         git tag -a "${tag}" "${ref}" -m "${message}" ${force} ${alwaysPass}
-        git push origin "${tag}" "$force" ${alwaysPass}
+        git push origin "${tag}" ${force} ${alwaysPass}
 branding:
   icon: search
   color: yellow
