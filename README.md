@@ -43,7 +43,7 @@ jobs:
           current_version: ${{ steps.get-latest-tag.outputs.tag }}
           level: minor
 
-      - uses: actions-ecosystem/action-push-tag@v1
+      - uses: thejeff77/action-push-tag@main
         with:
           tag: ${{ steps.bump-semver.outputs.new_version }}
           message: '${{ steps.bump-semver.outputs.new_version }}: PR #${{ github.event.pull_request.number }} ${{ github.event.pull_request.title }}'
