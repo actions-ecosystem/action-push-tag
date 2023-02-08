@@ -1,5 +1,5 @@
 name: Push Any Git Tag
-description: based on Actions Ecosystem Push Tag - Fixed with additional features to force push (for walking tags), specify a ref to push to, or always pass if the command fails.  (which was broken most of 2022 and current)
+description: based on Actions Ecosystem Push Tag - Fixed with additional features.
 author: Actions Ecosystem & theJeff77
 
 inputs:
